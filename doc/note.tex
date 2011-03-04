@@ -1,0 +1,885 @@
+\documentclass[11pt,oneside]{article}  
+
+\usepackage{multicol, amsmath}
+\usepackage{graphicx, epsfig, subfigure, indentfirst}
+\usepackage[hang]{caption}                % other caption paras are
+                                          % set below
+\setlength{\textheight}{8.0in}            % set hight of the text
+\setlength{\topmargin}{5 mm}              % set margin of the head to the text
+\setlength{\oddsidemargin}{0.0in}         % set left margin to the text
+\setlength{\evensidemargin}{0.0in}
+\setlength{\rightmargin}{0.0in}           % set right margin to the text
+\setlength{\headheight}{15.0pt}
+\setlength{\textwidth}{6.5in}             % set width of the text
+\renewcommand{\baselinestretch}{1.5}      % double the space between lines
+\makeatletter                             % '@' is a regular letter
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Undulator and Electron Beam Parameters}
+
+\vspace{5mm}
+\begin{center}
+\begin{tabular}{|l|r@{.}l|c|}
+ \hline
+  Electron Energy                           & 17&5  & $GeV$            \\
+  Bunch Charge $(Q)$                        &  1&0  & $nC$             \\
+  Bunch Length $(l_{\text{lab}})$           & 25&0  & $\mu m$          \\
+  Beta Function $( \beta_{x} )$             & 32&0  & $m$              \\
+  Emittance $( \epsilon_{x} )$              &  1&4  & $mm\text{-}mrad$ \\
+  Undulator Period $(\lambda_{\text{lab}})$ & 35&6  & $mm$             \\
+  Maximum Magnetic Field ($B_{0}$)          &  1&0  & $T$              \\
+ \hline
+\end{tabular}
+\end{center}
+%\vspace{5mm}
+
+\begin{equation}
+  \gamma m_{e} \frac{d^{2} x_{\text{lab}}}{dt^{2}}
+= - Q v_{z} B_{y}
+= - Q B_{0} v_{z} \cos \left( k_{\text{lab}} z_{\text{lab}} \right) .
+\end{equation}
+\begin{equation}
+    \frac{d^{2} x_{\text{lab}}}{dt^{2}}
+= - \frac{Q B_{0}}{\gamma m_{e}}
+    \cos \left( k_{\text{lab}} z_{\text{lab}} \right) ,
+\end{equation}
+where $z_{\text{lab}} = v_{\text{lab}} t = \beta c$.
+
+\begin{equation}
+  x_{\text{lab}}
+= \frac{Q B_{0} v_{z}}{\gamma m_{e}} \frac{1}{k_{\text{lab}}^{2} v_{z}^{2}}
+  \cos \left( k_{\text{lab}} v_{\text{lab}} t \right) 
+= \frac{Q B_{0}}{\gamma m_{e} k_{\text{lab}}^{2} v_{z}}
+  \cos \left( k_{\text{lab}} v_{\text{lab}} t \right) .
+\end{equation}
+
+Since $k_{\text{lab}} = \gamma k_{\text{rest}}$,
+\begin{equation}
+  k_{\text{rest}}
+= \frac{2\pi}{\lambda_{\text{rest}}}
+= \frac{2\pi}{\lambda_{\text{lab}} / \gamma}
+= \frac{2\pi \gamma}{\lambda_{\text{lab}}} ,
+\end{equation}
+\begin{equation}
+  \omega_{\text{rest}}
+= \frac{2\pi \gamma v_{z}}{\lambda_{\text{lab}}}
+= \frac{2\pi (\beta \gamma) c}{\lambda_{\text{lab}}} ,
+\end{equation}
+and
+\begin{equation}
+  x_{0}
+= \frac{Q B_{0}}{\gamma m_{e} k_{\text{lab}}^{2} v_{z}}
+= \frac{Q B_{0}}{\gamma^{3} m_{e} k_{\text{rest}}^{2} v_{z}}
+= \frac{Q B_{0}}{\gamma^{2} m_{e} k_{\text{rest}}^{2} (\beta \gamma) c} .
+\end{equation}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Beam Distribution}
+
+\begin{equation}
+  \rho (x,y) 
+ =  \rho_{0}
+    \exp \Bigg[
+       - \frac{ \left( x - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] . 
+\end{equation}
+
+\begin{equation}
+\begin{split}
+  Q_{\lambda}
+= & \frac{Q}{l_{\text{rest}}}
+=   \frac{Q}{(\gamma l_{\text{lab}})} \\
+= & \int d^{2} \vec{r}_{\perp} \rho (x,y)  \\
+= & \int d^{2} \vec{r}_{\perp} \rho_{0} 
+    \exp \Bigg[
+       - \frac{ \left( x - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+= & \rho_{0}
+    \Bigg\{
+      \int_{0}^{a} dx
+      \exp \bigg[ - \frac{ \left( x - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+           \bigg]
+    \Bigg\}
+    \Bigg\{
+      \int_{0}^{b} dy
+      \exp \bigg[ - \frac{ \left( y - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+           \bigg]
+    \Bigg\} \\
+= & 2 \pi \sigma_{x} \sigma_{y} \rho_{0}
+    \Bigg\{
+      \int_{-\infty}^{a} dx \rho_{x} (x)
+    + \int_{0}^{\infty} dx \rho_{x} (x)
+    - \int_{-\infty}^{\infty} dx \rho_{x} (x)
+    \Bigg\} \\
+  & \;\;\;\;\;\;\;\;\;\;\;
+    \times
+    \Bigg\{
+      \int_{-\infty}^{b} dy \rho_{y} (y)
+    + \int_{0}^{\infty} dy \rho_{y} (y)
+    - \int_{-\infty}^{\infty} dy \rho_{y} (y)
+    \Bigg\} \\
+= & 2 \pi \sigma_{x} \sigma_{y} \rho_{0}
+    \Bigg\{
+      \frac{1}{2}
+      \bigg[
+        1 + \mbox{erf} \left( \frac{a-a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+      \bigg]
+    + \frac{1}{2}
+      \bigg[
+        1 + \mbox{erf} \left( \frac{0+a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+      \bigg]
+    - 1
+    \Bigg\} \\
+  & \;\;\;\;\;\;\;\;\;\;\;
+    \times
+    \Bigg\{
+      \frac{1}{2}
+      \bigg[
+        1 + \mbox{erf} \left( \frac{b-b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+      \bigg]
+    + \frac{1}{2}
+      \bigg[
+        1 + \mbox{erf} \left( \frac{0+b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+      \bigg]
+    - 1
+    \Bigg\} \\
+= & 2 \pi \sigma_{x} \sigma_{y}
+    \Bigg[
+      \mbox{erf} \left( \frac{a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+      \mbox{erf} \left( \frac{b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right) 
+    \Bigg]
+    \rho_{0} , 
+\end{split}
+\end{equation}
+where $\rho_{x} = \frac{1}{\sqrt{2 \pi \sigma_{x}^{2}}} 
+                  \exp \bigg[ - \frac{ \left( x - a/2 \right)^{2} }
+                                     { 2\sigma_{x}^{2}} \bigg] $ and 
+$\rho_{y} = \frac{1}{\sqrt{2 \pi \sigma_{y}^{2}}} 
+            \exp \bigg[ - \frac{ \left( y - b/2 \right)^{2} }
+                               { 2\sigma_{y}^{2}} \bigg] $. And therefore,
+\begin{equation}
+\begin{split}
+  \rho_{0}
+= \frac{Q_{\lambda}}{ 2 \pi \sigma_{x} \sigma_{y} }
+    \Bigg[
+      \mbox{erf} \left( \frac{a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+      \mbox{erf} \left( \frac{b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right) 
+    \Bigg]^{-1} , 
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+  \rho (x,y)
+= & \frac{Q_{\lambda}}{ 2 \pi \sigma_{x} \sigma_{y} }
+    \Bigg[
+      \mbox{erf} \left( \frac{a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+      \mbox{erf} \left( \frac{b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right) 
+    \Bigg]^{-1}
+    \exp \Bigg[
+       - \frac{ \left( x - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] . \\
+\end{split}
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Test Particle Generation}
+
+\begin{equation}
+\begin{split}
+  N_{\lambda} (x,y)
+= & \frac{1}{Q_{\lambda}}
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \rho \left( x^{\prime}, y^{\prime} \right) \\
+= & \frac{\rho_{0}}{Q_{\lambda}} 
+    \Bigg\{
+      \int_{0}^{x} dx^{\prime}
+      \exp \bigg[
+         - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+           \bigg]
+    \Bigg\}
+    \Bigg\{
+      \int_{0}^{y} dy^{\prime}
+      \exp \bigg[
+         - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+           \bigg]
+    \Bigg\} \\
+= & \frac{\rho_{0}}{Q_{\lambda}} 2 \pi \sigma_{x} \sigma_{y}
+    \Bigg\{
+      \int_{-\infty}^{x} dx^{\prime} \rho_{x} (x^{\prime})
+    + \int_{0}^{\infty} dx^{\prime} \rho_{x} (x^{\prime})
+    - \int_{-\infty}^{\infty} dx^{\prime} \rho_{x} (x^{\prime})
+    \Bigg\} \\
+  & \;\;\;\;\;\;\;\;\;\;\;\;\;
+    \times
+    \Bigg\{
+      \int_{-\infty}^{y} dy^{\prime} \rho_{y} (y^{\prime})
+    + \int_{0}^{\infty} dy^{\prime} \rho_{y} (y^{\prime})
+    - \int_{-\infty}^{\infty} dy^{\prime} \rho_{y} (y^{\prime})
+    \Bigg\} \\
+= & \frac{\rho_{0}}{Q_{\lambda}} 2 \pi \sigma_{x} \sigma_{y}
+    \Bigg\{
+      \frac{1}{2}
+      \bigg[
+        1 + \mbox{erf} \left( \frac{x-a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+      \bigg]
+    + \frac{1}{2}
+      \bigg[
+        1 + \mbox{erf} \left( \frac{0+a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+      \bigg]
+    - 1
+    \Bigg\} \\
+  & \;\;\;\;\;\;\;\;\;\;\;\;\;
+    \times
+    \Bigg\{
+      \frac{1}{2}
+      \bigg[
+        1 + \mbox{erf} \left( \frac{y-b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+      \bigg]
+    + \frac{1}{2}
+      \bigg[
+        1 + \mbox{erf} \left( \frac{0+b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+      \bigg]
+    - 1
+    \Bigg\} \\
+= & \frac{\rho_{0}}{4 Q_{\lambda}} 2 \pi \sigma_{x} \sigma_{y}
+    \Bigg[
+      \mbox{erf} \left( \frac{x-a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+    + \mbox{erf} \left( \frac{a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+    \Bigg]
+    \Bigg[
+      \mbox{erf} \left( \frac{y-b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+    + \mbox{erf} \left( \frac{b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+    \Bigg] \\
+= & \frac{1}{4}
+    \frac{
+    \Bigg[
+      \mbox{erf} \left( \frac{x-a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+    + \mbox{erf} \left( \frac{a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+    \Bigg]
+    \Bigg[
+      \mbox{erf} \left( \frac{y-b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+    + \mbox{erf} \left( \frac{b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+    \Bigg]
+         }
+         {
+      \mbox{erf} \left( \frac{a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+      \mbox{erf} \left( \frac{b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+         } .
+\end{split}
+\end{equation}
+
+  $N_{\lambda}$ can be separated as $N_{\lambda}= N_{x} (x) N_{y} (y)$, where
+\begin{equation}
+\begin{split}
+  N_{x} (x)
+= & \frac{1}{2}
+    \frac{
+      \mbox{erf} \left( \frac{x-a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+    + \mbox{erf} \left( \frac{a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+         }
+         {
+      \mbox{erf} \left( \frac{a/2}{\sqrt{2 \pi \sigma_{x}^{2}}} \right)
+         } , \\
+  N_{y} (y)
+= & \frac{1}{2}
+    \frac{
+      \mbox{erf} \left( \frac{y-b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+    + \mbox{erf} \left( \frac{b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+         }
+         {
+      \mbox{erf} \left( \frac{b/2}{\sqrt{2 \pi \sigma_{y}^{2}}} \right)
+         } . \\
+\end{split}
+\end{equation}
+
+
+%where $N_{\lambda} e = Q_{\lambda}$.
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Electromagnetic Potentials}
+
+\begin{equation}
+\begin{split}
+  \phi \left( \vec{r},t \right)
+= & \frac{1}{\epsilon_{0}} \sum_{mn} \sum_{l=0}^{\infty} \sum_{j=0}^{l}
+    C_{j}^{l} \frac{ (-x_{0})^{l} }{ l! } \frac{1}{2^{l}}
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \psi_{mn} \left( \vec{r}_{\perp} \right) 
+    \psi_{mn}^{*} \left( \vec{r}_{\perp}^{\prime} \right)
+    \frac{ \partial^{l} \rho \left( x^{\prime}, y^{\prime} \right) }
+         { \partial x^{\prime l} } \\
+  & \times
+    \frac{ \exp \left[ i (2j-l)(kz+\omega t) \right] }
+         { (2j-l)^{2} \left( 1 - \beta^{2} \right) k^{2} + k_{\perp mn}^{2} } .
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+  A_{x} \left( \vec{r},t \right) = 
+- & \mu_{0} x_{0} \omega \sum_{mn} \sum_{l=0}^{\infty} \sum_{j=0}^{l}
+    C_{j}^{l} \frac{ (-x_{0})^{l} }{ l! } \frac{1}{2^{l}2i}
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \psi_{mn} \left( \vec{r}_{\perp} \right)
+    \psi_{mn}^{*} \left( \vec{r}_{\perp}^{\prime} \right)
+    \frac{ \partial^{l} \rho \left( x^{\prime}, y^{\prime} \right) }
+         { \partial x^{\prime l} } \\
+  & \times
+    \Bigg[
+    \frac{ \exp \left[ i (2j-l+1)(kz+\omega t) \right] }
+         { (2j-l+1)^{2} \left( 1 - \beta^{2} \right) k^{2} + k_{\perp mn}^{2} }
+  - \frac{ \exp \left[ i (2j-l-1)(kz+\omega t) \right] }
+         { (2j-l-1)^{2} \left( 1 - \beta^{2} \right) k^{2} + k_{\perp mn}^{2} }
+    \Bigg]
+\end{split}
+\end{equation}
+
+For a rectangular pipe,
+\begin{equation}
+\begin{split}
+  \psi_{mn}^{\phi} \left( \vec{r}_{\perp} \right)
+= & \frac{2}{\sqrt{ab}} \sin \left( \frac{m \pi x}{a} \right)
+                      \sin \left( \frac{n \pi y}{b} \right), \\
+  \psi_{mn}^{A_{x}} \left( \vec{r}_{\perp} \right)
+= & \frac{2}{\sqrt{ab}} \cos \left( \frac{m \pi x}{a} \right)
+                      \sin \left( \frac{n \pi y}{b} \right),
+\end{split}
+\end{equation}
+
+and including only $l=0$ and $l=1$ for $\phi$ and $l=0$ for $A_{x}$, then
+\begin{equation}
+\begin{split}
+  \phi \left( \vec{r},t \right)
+= & \frac{4}{\epsilon_{0} ab}
+    \sum_{mn}
+    \frac{ \sin \left( m \pi x / a \right) \sin \left( n \pi y / b \right) }
+         { \left( m \pi /a \right)^{2} + \left( n \pi / b \right)^{2} }
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \sin \left( \frac{m \pi x^{\prime} }{a} \right)
+    \sin \left( \frac{n \pi y^{\prime} }{b} \right) 
+    \rho \left( x^{\prime}, y^{\prime} \right) \\
++ & \frac{4}{\epsilon_{0} ab}
+    \left[ x_{0} \cos(kz+\omega t) \right]
+    \sum_{mn} \left( \frac{m \pi}{a} \right)
+    \frac{ \sin \left( m \pi x / a \right) \sin \left( n \pi y / b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \left[ \left( m \pi /a \right)^{2}
+                + \left( n \pi / b \right)^{2} \right] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{m \pi x^{\prime} }{a} \right)
+    \sin \left( \frac{n \pi y^{\prime} }{b} \right)
+    \rho \left( x^{\prime}, y^{\prime} \right)
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+  A_{x} \left( \vec{r},t \right) =
+- & \frac{4 \mu_{0}}{ab}
+    \left[ x_{0} \omega \sin(kz+\omega t) \right]
+    \sum_{mn} \left( \frac{m \pi}{a} \right)
+    \frac{ \cos \left( m \pi x / a \right) \sin \left( n \pi y / b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \left[ \left( m \pi /a \right)^{2}
+                + \left( n \pi / b \right)^{2} \right] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{m \pi x^{\prime} }{a} \right)
+    \sin \left( \frac{n \pi y^{\prime} }{b} \right)
+    \rho \left( x^{\prime}, y^{\prime} \right)
+\end{split}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Electromagnetic Fields}
+
+\begin{equation}
+\begin{split}
+  \mathbf{E} (x,y,z)
+& = \Big\{ E_{0x}(x,y)
+         + E_{1x}(x,y) \left[ x_{0} \cos(k z + \omega t) \right] \Big\}
+    \hat{e}_{x} \\
+& + \Big\{ E_{0y}(x,y)
+         + E_{1y}(x,y) \left[ x_{0} \cos(k z + \omega t) \right] \Big\}
+    \hat{e}_{y} \\
+& +        E_{1z}(x,y) \left[ x_{0} k \sin(k z + \omega t) \right]
+   \hat{e}_{z} \\
+  \mathbf{B} (x,y,z)
+& =        B_{1y}(x,y) \left[ x_{0} \omega k \cos(k z + \omega t) \right]
+   \hat{e}_{y} \\
+& +        B_{1z}(x,y) \left[ x_{0} \omega \sin(k z + \omega t) \right]
+   \hat{e}_{z} \\
+\end{split}
+\end{equation}
+
+Define
+\begin{equation}
+  E_{0}
+= \frac{2 Q_{\lambda}}{\pi^{3} \epsilon_{0} \sigma_{x} \sigma_{y}}
+  \Bigg[
+    \mbox{erf} \left( \frac{a/2}{\sqrt{2 \pi \sigma_{x}}} \right)
+    \mbox{erf} \left( \frac{b/2}{\sqrt{2 \pi \sigma_{y}}} \right) 
+  \Bigg]^{-1}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+  E_{x} = - & \frac{ \partial \phi }{ \partial x }
+            - \frac{ \partial A_{x} }{ \partial t } \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+=
+- & \frac{\pi^{2}}{ab} E_{0}
+    \sum_{mn} \left( \frac{m \pi}{a} \right)
+    \frac{ \cos \left( m \pi x /a \right) \sin \left( n \pi y /b \right) }
+         { \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2} } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \sin \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+- & \frac{\pi^{2}}{ab} E_{0}
+    \left[ x_{0} \cos( k z+\omega t) \right] 
+    \sum_{mn} 
+    \Bigg[ \left( \frac{m \pi}{a} \right)^{2} 
+         - \left( \frac{\omega}{c} \right)^{2} \Bigg]
+    \frac{ \cos \left( m \pi x /a \right) \sin \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+=
+- & E_{0}
+    \sum_{mn} \left( \frac{m}{\tilde{a}} \right)
+    \frac{ \cos \left( m \tilde{x} \right) \sin \left( n \tilde{y} \right) }
+         { \left( m / \tilde{a} \right)^{2} + 
+           \left( n / \tilde{b} \right)^{2} } \\
+  & \times
+    \int d^{2} \vec{\tilde{r}}_{\perp}^{\prime}
+    \sin \left( m \tilde{x}^{\prime} \right)
+    \sin \left( n \tilde{y}^{\prime} \right)
+    \exp \Bigg[
+       - \frac{ \tilde{a}^{2} } { 2\sigma_{x}^{2}}
+         \left( \tilde{x}^{\prime} - \frac{\pi}{2} \right)^{2}
+       - \frac{ \tilde{b}^{2} } { 2\sigma_{y}^{2}}
+         \left( \tilde{y}^{\prime} - \frac{\pi}{2} \right)^{2}
+         \Bigg] \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+- & E_{0}
+    \left[ x_{0} \cos( k z+\omega t) \right]
+    \sum_{mn} 
+    \Bigg[ \left( \frac{m}{\tilde{a}} \right)^{2}
+         - \left( \frac{\omega}{c} \right)^{2} \Bigg]
+    \frac{ \cos \left( m \tilde{x} \right) \sin \left( n \tilde{y} \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m / \tilde{a} \right)^{2} + 
+           \left( n / \tilde{b} \right)^{2}  
+           \Big] }  \\
+  & \times
+    \int d^{2} \vec{\tilde{r}}_{\perp}^{\prime}
+    \cos \left( m \tilde{x}^{\prime} \right)
+    \sin \left( n \tilde{y}^{\prime} \right)
+    \exp \Bigg[
+       - \frac{ \tilde{a}^{2} } { 2\sigma_{x}^{2}}
+         \left( \tilde{x}^{\prime} - \frac{\pi}{2} \right)^{2}
+       - \frac{ \tilde{b}^{2} } { 2\sigma_{y}^{2}}
+         \left( \tilde{y}^{\prime} - \frac{\pi}{2} \right)^{2}
+         \Bigg] . \\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+  E_{y} = - & \frac{ \partial \phi }{ \partial y } \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+=
+- & \frac{\pi^{2}}{ab} E_{0}
+    \sum_{mn} \left( \frac{n \pi}{b} \right)
+    \frac{ \sin \left( m \pi x /a \right) \cos \left( n \pi y /b \right) }
+         { \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2} } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \sin \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+- & \frac{\pi^{2}}{ab} E_{0}
+    \left[ x_{0} \cos( k z+\omega t) \right] 
+    \sum_{mn} 
+    \left( \frac{m \pi}{a} \right)  \left( \frac{n \pi}{b} \right)
+    \frac{ \sin \left( m \pi x /a \right) \cos \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+=
+- & E_{0}
+    \sum_{mn} \left( \frac{n}{\tilde{b}} \right)
+    \frac{ \sin \left( m \tilde{x} \right) \cos \left( n \tilde{y} \right) }
+         { \left( m / \tilde{a} \right)^{2} + 
+           \left( n / \tilde{b} \right)^{2} } \\
+  & \times
+    \int d^{2} \vec{\tilde{r}}_{\perp}^{\prime}
+    \sin \left( m \tilde{x}^{\prime} \right)
+    \sin \left( n \tilde{y}^{\prime} \right)
+    \exp \Bigg[
+       - \frac{ \tilde{a}^{2} } { 2\sigma_{x}^{2}}
+         \left( \tilde{x}^{\prime} - \frac{\pi}{2} \right)^{2}
+       - \frac{ \tilde{b}^{2} } { 2\sigma_{y}^{2}}
+         \left( \tilde{y}^{\prime} - \frac{\pi}{2} \right)^{2}
+         \Bigg] \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+- & E_{0}
+    \left[ x_{0} \cos( k z+\omega t) \right]
+    \sum_{mn} 
+    \left( \frac{m}{\tilde{a}} \right) \left( \frac{n}{\tilde{b}} \right)
+    \frac{ \sin \left( m \tilde{x} \right) \cos \left( n \tilde{y} \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m / \tilde{a} \right)^{2} + 
+           \left( n / \tilde{b} \right)^{2}  
+           \Big] }  \\
+  & \times
+    \int d^{2} \vec{\tilde{r}}_{\perp}^{\prime}
+    \cos \left( m \tilde{x}^{\prime} \right)
+    \sin \left( n \tilde{y}^{\prime} \right)
+    \exp \Bigg[
+       - \frac{ \tilde{a}^{2} } { 2\sigma_{x}^{2}}
+         \left( \tilde{x}^{\prime} - \frac{\pi}{2} \right)^{2}
+       - \frac{ \tilde{b}^{2} } { 2\sigma_{y}^{2}}
+         \left( \tilde{y}^{\prime} - \frac{\pi}{2} \right)^{2}
+         \Bigg] . \\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+  E_{z} = - & \frac{ \partial \phi }{ \partial z } \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+=
+  & \frac{\pi^{2}}{ab} E_{0}
+    \left[ x_{0} k \sin( k z+\omega t) \right] 
+    \sum_{mn} 
+    \left( \frac{m \pi}{a} \right) 
+    \frac{ \sin \left( m \pi x /a \right) \sin \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+=
+  & E_{0}
+    \left[ x_{0} k \sin( k z+\omega t) \right]
+    \sum_{mn} 
+    \left( \frac{m}{\tilde{a}} \right)
+    \frac{ \sin \left( m \tilde{x} \right) \sin \left( n \tilde{y} \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m / \tilde{a} \right)^{2} + 
+           \left( n / \tilde{b} \right)^{2}  
+           \Big] }  \\
+  & \times
+    \int d^{2} \vec{\tilde{r}}_{\perp}^{\prime}
+    \cos \left( m \tilde{x}^{\prime} \right)
+    \sin \left( n \tilde{y}^{\prime} \right)
+    \exp \Bigg[
+       - \frac{ \tilde{a}^{2} } { 2\sigma_{x}^{2}}
+         \left( \tilde{x}^{\prime} - \frac{\pi}{2} \right)^{2}
+       - \frac{ \tilde{b}^{2} } { 2\sigma_{y}^{2}}
+         \left( \tilde{y}^{\prime} - \frac{\pi}{2} \right)^{2}
+         \Bigg] . \\
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+  B_{y} = & \frac{ \partial A_{x} }{ \partial z } \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+=
+- & \frac{\pi^{2}}{ab} \frac{E_{0}}{c^{2}}
+    \left[ x_{0} \omega k \cos( k z+\omega t) \right]
+    \sum_{mn}
+    \frac{ \cos \left( m \pi x /a \right) \sin \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+= &
+  - \frac{E_{0}}{c^{2}}
+    \left[ x_{0} \omega k \cos( k z+\omega t) \right]
+    \sum_{mn}
+    \frac{ \cos \left( m \tilde{x} \right) \sin \left( n \tilde{y} \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m / \tilde{a} \right)^{2} + 
+           \left( n / \tilde{b} \right)^{2} 
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{\tilde{r}}_{\perp}^{\prime}
+    \cos \left( m \tilde{x}^{\prime} \right)
+    \sin \left( n \tilde{y}^{\prime} \right)
+    \exp \Bigg[
+       - \frac{ \tilde{a}^{2} } { 2\sigma_{x}^{2}}
+         \left( \tilde{x}^{\prime} - \frac{\pi}{2} \right)^{2}
+       - \frac{ \tilde{b}^{2} } { 2\sigma_{y}^{2}}
+         \left( \tilde{y}^{\prime} - \frac{\pi}{2} \right)^{2}
+         \Bigg] . \\ 
+\end{split}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{equation}
+\begin{split}
+  B_{z} = & - \frac{ \partial A_{x} }{ \partial y } \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+= & \frac{\pi^{2}}{ab} \frac{E_{0}}{c^{2}}
+    \left[ x_{0} \omega \sin(kz+\omega t) \right]
+    \sum_{mn} \left( \frac{n \pi}{b} \right)
+    \frac{\cos \left( m \pi x /a \right) \cos \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+= & \frac{E_{0}}{c^{2}}
+    \left[ x_{0} \omega \sin(kz+\omega t) \right]
+    \sum_{mn} \left( \frac{n}{\tilde{b}} \right)
+    \frac{\cos \left( m \tilde{x} \right) \cos \left( n \tilde{y} \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m / \tilde{a} \right)^{2} + 
+           \left( n / \tilde{b} \right)^{2} 
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{\tilde{r}}_{\perp}^{\prime}
+    \cos \left( m \tilde{x}^{\prime} \right)
+    \sin \left( n \tilde{y}^{\prime} \right)
+    \exp \Bigg[
+       - \frac{ \tilde{a}^{2} } { 2\sigma_{x}^{2}}
+         \left( \tilde{x}^{\prime} - \frac{\pi}{2} \right)^{2}
+       - \frac{ \tilde{b}^{2} } { 2\sigma_{y}^{2}}
+         \left( \tilde{y}^{\prime} - \frac{\pi}{2} \right)^{2}
+         \Bigg] . \\
+\end{split}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Electromagnetic Field Components}
+
+\begin{equation}
+\begin{split}
+  E_{0x} (x,y)
+=
+- & \frac{\pi^{2}}{ab} E_{0}
+    \sum_{mn} \left( \frac{m \pi}{a} \right)
+    \frac{ \cos \left( m \pi x /a \right) \sin \left( n \pi y /b \right) }
+         { \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2} } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \sin \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+  E_{1x} (x,y)
+=
+- & \frac{\pi^{2}}{ab} E_{0}
+    \sum_{mn} 
+    \Bigg[ \left( \frac{m \pi}{a} \right)^{2} 
+         - \left( \frac{\omega}{c} \right)^{2} \Bigg]
+    \frac{ \cos \left( m \pi x /a \right) \sin \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+  E_{0y} (x,y)
+=
+- & \frac{\pi^{2}}{ab} E_{0}
+    \sum_{mn} \left( \frac{n \pi}{b} \right)
+    \frac{ \sin \left( m \pi x /a \right) \cos \left( n \pi y /b \right) }
+         { \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2} } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \sin \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+  E_{1y} (x,y)
+=
+- & \frac{\pi^{2}}{ab} E_{0}
+    \sum_{mn} 
+    \left( \frac{m \pi}{a} \right)  \left( \frac{n \pi}{b} \right)
+    \frac{ \sin \left( m \pi x /a \right) \cos \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+  E_{1z} (x,y)
+=
+  & \frac{\pi^{2}}{ab} E_{0}
+    \sum_{mn} 
+    \left( \frac{m \pi}{a} \right) 
+    \frac{ \sin \left( m \pi x /a \right) \sin \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+  B_{1y} (x,y)
+=
+- & \frac{\pi^{2}}{ab} \frac{E_{0}}{c^{2}}
+         {\pi a b \sigma_{x} \sigma_{y}}
+    \sum_{mn}
+    \frac{ \cos \left( m \pi x /a \right) \sin \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+  B_{1z} (x,y)
+=
+  & \frac{\pi^{2}}{ab} \frac{E_{0}}{c^{2}}
+         {\pi a b \sigma_{x} \sigma_{y}}
+    \sum_{mn} \left( \frac{n \pi}{b} \right)
+    \frac{\cos \left( m \pi x /a \right) \cos \left( n \pi y /b \right) }
+         { \left( 1 - \beta^{2} \right) k^{2}
+         + \Big[
+           \left( m \pi /a \right)^{2} + \left( n \pi /b \right)^{2}
+           \Big] } \\
+  & \times
+    \int d^{2} \vec{r}_{\perp}^{\prime}
+    \cos \left( \frac{ m \pi x^{\prime} }{ a } \right)
+    \sin \left( \frac{ n \pi y^{\prime} }{ b } \right)
+    \exp \Bigg[
+       - \frac{ \left( x^{\prime} - a/2 \right)^{2} }{ 2\sigma_{x}^{2}}
+       - \frac{ \left( y^{\prime} - b/2 \right)^{2} }{ 2\sigma_{y}^{2}}
+         \Bigg] \\
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
