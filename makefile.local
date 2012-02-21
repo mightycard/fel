@@ -1,0 +1,25 @@
+## 
+## This Makefile requires two environment variables
+## be predefined: BOOST_INC  and INSDIR
+## See the chef-config/config.pri.* files 
+## for examples.
+## 
+
+.SUFFIXES: .o .cpp .cc
+
+C++        = g++
+
+##C++FLAGS   =`pkg-config --cflags --libs glib-2.0` 
+
+INCS       = -Iinclude \
+             -I/usr/lib/glib-2.0/include \
+
+LIBS       = -lglib-2.0 \
+
+##SYSLIBS    = -lm -lnsl
+
+.cc :
+	$(C++) $(C++FLAGS) $(INCS) -o $@ $< $(LIBS) $(SYSLIBS)
+
+clean:  
+	\rm *.o;

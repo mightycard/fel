@@ -3,7 +3,7 @@
       Integer j1, k1, k2, k3, k4
       Integer NT, NP
       Integer Mmax, Nmax
-      Parameter (NT = 1000, NP = 10000)
+      Parameter (NT = 1000, NP = 1000)
       Real pi, c, e, mk, me, eps, mu
       Real Eu, bex, bey, emx, emy, lb, lu, Bmax, Q
       Real g, bg, sigx, sigy, Ql, k, w, x0, a, b, atil, btil
